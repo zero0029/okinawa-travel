@@ -36,10 +36,11 @@ export default function EventCard({ event }) {
         {event.locationName}
       </p>
 
+      {/* 支援 \n 多行換行顯示 */}
       {event.note && (
-        <p className="text-xs bg-amber-50/80 text-amber-900 p-2.5 rounded-xl mb-3 border border-amber-100">
-          💡 {event.note}
-        </p>
+        <div className="text-xs bg-amber-50/90 text-amber-900 p-3 rounded-xl mb-3 border border-amber-100 whitespace-pre-line leading-relaxed">
+          {event.note}
+        </div>
       )}
 
       <div className="flex flex-wrap items-center gap-2 pt-2 border-t border-slate-100">

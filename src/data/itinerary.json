@@ -46,55 +46,55 @@
     {
       "day": 2,
       "date": "2026-10-27",
-      "title": "Day 2: 中北部絕景 萬座毛與美麗海水族館",
+      "title": "Day 2: 古宇利島跨海大橋 & 美麗海水族館",
       "events": [
         {
           "id": "evt-04",
-          "time": "10:00",
-          "title": "萬座毛觀景台",
+          "time": "09:30",
+          "title": "古宇利大橋 & 心形岩",
           "category": "景點",
-          "locationName": "萬座毛",
-          "mapCode": "206 312 039*17",
-          "note": "欣賞象鼻岩與無敵藍海，門票 100 日圓。"
+          "locationName": "古宇利島",
+          "mapCode": "485 692 142*00",
+          "note": "跨海大橋兩側海景極美，可至古宇利塔看景或吃蝦蝦飯。"
         },
         {
           "id": "evt-05",
-          "time": "13:30",
-          "title": "沖繩美麗海水族館",
+          "time": "13:00",
+          "title": "沖繩美麗海水族館 (海洋博公園)",
           "category": "景點",
-          "locationName": "海洋博公園內",
+          "locationName": "海洋博公園 P7立體停車場",
           "mapCode": "553 075 797*77",
-          "note": "看黑潮之海鯨鯊餵食秀（表演時間約 15:00）。"
+          "note": "🐬免費海豚秀：10:30/11:30/13:00/15:00/17:00 (戶外劇場)\n🐋鬼蝠魟餵食：09:30\n🐋鯨鯊餵食秀：15:00 / 17:00 (黑潮之海，建議提早15分卡位)\n🐟海豚餵食體驗：10:00/11:00/12:00/13:30/15:30 (¥500現場購票)"
         },
         {
           "id": "evt-06",
-          "time": "17:30",
-          "title": "美國村日落大道看夕陽",
+          "time": "18:00",
+          "title": "美國村日落大道 & 晚餐",
           "category": "景點",
           "locationName": "美國村 American Village",
           "mapCode": "33 526 452*52",
-          "note": "充滿異國風情的燈光美景與咖啡廳。"
+          "note": "異國風情街景，欣賞夕陽與夜景。"
         }
       ]
     },
     {
       "day": 3,
       "date": "2026-10-28",
-      "title": "Day 3: 南城海景咖啡與波上宮祈福",
+      "title": "Day 3: 波上宮參拜 & Outlet 最後採買",
       "events": [
         {
           "id": "evt-07",
-          "time": "10:30",
+          "time": "10:00",
           "title": "波上宮神社參拜",
           "category": "景點",
           "locationName": "波上宮",
           "mapCode": "33 155 813*41",
-          "note": "懸崖上的神社，可買健康御守與懸崖邊海景。"
+          "note": "懸崖上的神社，可買健康御守。"
         },
         {
           "id": "evt-08",
-          "time": "13:00",
-          "title": "沖繩平價精品購物城 ASHIBINAA",
+          "time": "12:30",
+          "title": "ASHIBINAA Outlet 購物",
           "category": "購物",
           "locationName": "Outlet Mall ASHIBINAA",
           "mapCode": "232 544 452*22",
@@ -102,12 +102,12 @@
         },
         {
           "id": "evt-09",
-          "time": "16:00",
-          "title": "OTS 還車 & 搭接駁車往那霸機場",
+          "time": "15:30",
+          "title": "OTS 還車 & 搭接駁車往機場",
           "category": "交通",
           "locationName": "OTS 租車 臨空豐崎營業所",
           "mapCode": "232 543 512*22",
-          "note": "記得先把油箱加滿（Regular 汽油）並保留收據。"
+          "note": "記得先把油箱加滿（Regular 汽油）並保留發票。"
         }
       ]
     }
