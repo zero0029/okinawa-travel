@@ -1,9 +1,33 @@
 import React from 'react';
-import { Car, PhoneCall } from 'lucide-react';
+import { Car, PhoneCall, MapPin, ExternalLink } from 'lucide-react';
 
 export default function DrivingInfo() {
   return (
     <div className="space-y-4">
+      {/* 停車場地圖查詢 */}
+      <div className="bg-slate-800 text-white p-5 rounded-2xl shadow-sm relative overflow-hidden">
+        <div className="flex items-start justify-between mb-2">
+          <div className="flex items-center gap-2">
+            <span className="p-2 bg-slate-700 text-amber-400 rounded-xl">🅿️</span>
+            <div>
+              <h3 className="text-md font-bold text-white">沖繩即時停車場查詢</h3>
+              <p className="text-[11px] text-slate-400">LocationSmart 費用與剩餘車位</p>
+            </div>
+          </div>
+        </div>
+        <p className="text-xs text-slate-300 mb-3 leading-relaxed">
+          出發前或抵達景點時，可直接點擊查詢周邊停車場的位置、收費標準與剩餘空位。
+        </p>
+        <a
+          href="https://www.locationsmart.org/?tag=_service_parking"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-1.5 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold px-4 py-2.5 rounded-xl transition shadow-sm"
+        >
+          開啟 LocationSmart 停車場地圖 <ExternalLink className="w-3.5 h-3.5" />
+        </a>
+      </div>
+
       {/* 自駕須知 */}
       <div className="bg-white p-5 rounded-2xl shadow-sm border border-slate-200">
         <h3 className="text-md font-bold text-slate-800 flex items-center mb-3">

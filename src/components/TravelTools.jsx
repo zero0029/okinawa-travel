@@ -8,7 +8,7 @@ export default function TravelTools() {
   const [jpy, setJpy] = useState('');
   const [twd, setTwd] = useState('');
 
-  // 1. 行前 To-Do List (保存在 LocalStorage)
+  // 行前 To-Do List
   const [todoList, setTodoList] = useState(() => {
     const saved = localStorage.getItem('okinawa_todo_list');
     return saved ? JSON.parse(saved) : [
@@ -19,7 +19,7 @@ export default function TravelTools() {
     ];
   });
 
-  // 2. 伴手禮清單 (保存在 LocalStorage)
+  // 伴手禮清單
   const [shoppingList, setShoppingList] = useState(() => {
     const saved = localStorage.getItem('okinawa_shopping_list');
     return saved ? JSON.parse(saved) : [
@@ -190,19 +190,6 @@ export default function TravelTools() {
             </li>
           ))}
         </ul>
-      </div>
-
-      {/* 實用連結：停車場地圖 */}
-      <div className="bg-slate-100 p-4 rounded-xl border border-slate-200 text-xs">
-        <p className="font-semibold text-slate-700 mb-1">🅿️ 沖繩即時停車場查詢：</p>
-        <a
-          href="https://www.locationsmart.org/?tag=_service_parking"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-blue-600 hover:underline flex items-center gap-1 font-medium"
-        >
-          開啟 LocationSmart 沖繩停車場地圖 <ExternalLink className="w-3 h-3" />
-        </a>
       </div>
     </div>
   );
