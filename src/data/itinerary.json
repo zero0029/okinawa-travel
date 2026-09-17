@@ -1,0 +1,115 @@
+{
+  "tripInfo": {
+    "title": "沖繩秋日自駕 slow trip 🌺",
+    "startDate": "2026-10-26",
+    "endDate": "2026-10-28",
+    "emergencyContacts": [
+      { "name": "OTS租車客服", "phone": "+81-98-856-8877" },
+      { "name": "台北駐日代表處(那霸)", "phone": "+81-98-862-7008" }
+    ]
+  },
+  "days": [
+    {
+      "day": 1,
+      "date": "2026-10-26",
+      "title": "Day 1: 抵達那霸 & 瀨長島海景散策",
+      "events": [
+        {
+          "id": "evt-01",
+          "time": "10:30",
+          "title": "OTS 臨空豐崎營業所領車",
+          "category": "交通",
+          "locationName": "OTS 租車 臨空豐崎營業所",
+          "mapCode": "232 543 512*22",
+          "note": "記得攜帶台灣駕照正本 + 日文譯本 + 護照。"
+        },
+        {
+          "id": "evt-02",
+          "time": "12:30",
+          "title": "幸福鬆餅 (A Happy Pancake)",
+          "category": "美食",
+          "locationName": "瀨長島 Umikaji Terrace",
+          "mapCode": "33 002 602*06",
+          "note": "看海景吃鬆餅，建議提前線上預約。"
+        },
+        {
+          "id": "evt-03",
+          "time": "16:00",
+          "title": "國際通散策 & 飯店 Check-in",
+          "category": "購物",
+          "locationName": "那霸國際通",
+          "mapCode": "33 157 382*41",
+          "note": "晚上採買伴手禮與吃沖繩燒肉。"
+        }
+      ]
+    },
+    {
+      "day": 2,
+      "date": "2026-10-27",
+      "title": "Day 2: 中北部絕景 萬座毛與美麗海水族館",
+      "events": [
+        {
+          "id": "evt-04",
+          "time": "10:00",
+          "title": "萬座毛觀景台",
+          "category": "景點",
+          "locationName": "萬座毛",
+          "mapCode": "206 312 039*17",
+          "note": "欣賞象鼻岩與無敵藍海，門票 100 日圓。"
+        },
+        {
+          "id": "evt-05",
+          "time": "13:30",
+          "title": "沖繩美麗海水族館",
+          "category": "景點",
+          "locationName": "海洋博公園內",
+          "mapCode": "553 075 797*77",
+          "note": "看黑潮之海鯨鯊餵食秀（表演時間約 15:00）。"
+        },
+        {
+          "id": "evt-06",
+          "time": "17:30",
+          "title": "美國村日落大道看夕陽",
+          "category": "景點",
+          "locationName": "美國村 American Village",
+          "mapCode": "33 526 452*52",
+          "note": "充滿異國風情的燈光美景與咖啡廳。"
+        }
+      ]
+    },
+    {
+      "day": 3,
+      "date": "2026-10-28",
+      "title": "Day 3: 南城海景咖啡與波上宮祈福",
+      "events": [
+        {
+          "id": "evt-07",
+          "time": "10:30",
+          "title": "波上宮神社參拜",
+          "category": "景點",
+          "locationName": "波上宮",
+          "mapCode": "33 155 813*41",
+          "note": "懸崖上的神社，可買健康御守與懸崖邊海景。"
+        },
+        {
+          "id": "evt-08",
+          "time": "13:00",
+          "title": "沖繩平價精品購物城 ASHIBINAA",
+          "category": "購物",
+          "locationName": "Outlet Mall ASHIBINAA",
+          "mapCode": "232 544 452*22",
+          "note": "離機場 15 分鐘，歸還車前最後採買。"
+        },
+        {
+          "id": "evt-09",
+          "time": "16:00",
+          "title": "OTS 還車 & 搭接駁車往那霸機場",
+          "category": "交通",
+          "locationName": "OTS 租車 臨空豐崎營業所",
+          "mapCode": "232 543 512*22",
+          "note": "記得先把油箱加滿（Regular 汽油）並保留收據。"
+        }
+      ]
+    }
+  ]
+}
