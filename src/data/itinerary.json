@@ -3,6 +3,26 @@
     "title": "沖繩秋日自駕 slow trip 🌺",
     "startDate": "2026-10-26",
     "endDate": "2026-10-28",
+    "flight": {
+      "outbound": {
+        "airline": "台灣虎航",
+        "flightNo": "IT230",
+        "date": "2026-10-26",
+        "departure": "06:35 桃園 (TPE)",
+        "arrival": "08:55 那霸 (OKA)"
+      },
+      "inbound": {
+        "airline": "台灣虎航",
+        "flightNo": "IT233",
+        "date": "2026-10-28",
+        "departure": "21:30 那霸 (OKA)",
+        "arrival": "22:10 桃園 (TPE)"
+      },
+      "baggage": {
+        "carryOn": "手提行李 10kg (最多2件，單件尺寸 54x38x23 cm 內)",
+        "checked": "託運行李 15kg (總尺寸 203 cm 內)"
+      }
+    },
     "emergencyContacts": [
       { "name": "OTS租車客服", "phone": "+81-98-856-8877" },
       { "name": "台北駐日代表處(那霸)", "phone": "+81-98-862-7008" }
@@ -14,6 +34,14 @@
       "date": "2026-10-26",
       "title": "Day 1: 抵達那霸 & 瀨長島海景散策",
       "events": [
+        {
+          "id": "evt-00",
+          "time": "06:35",
+          "title": "✈️ 桃園機場 (TPE) ➔ 那霸機場 (OKA)",
+          "category": "交通",
+          "locationName": "桃園國際機場 第一航廈",
+          "note": "航班：台灣虎航 IT230 (06:35-08:55)\n🧳手提行李：10kg (最多2件，54x38x23cm)\n🧳託運行李：15kg (三邊合計203cm內)\n⚠️建議 04:35 前抵達機場辦理報到手續。"
+        },
         {
           "id": "evt-01",
           "time": "10:30",
@@ -102,12 +130,20 @@
         },
         {
           "id": "evt-09",
-          "time": "15:30",
+          "time": "17:30",
           "title": "OTS 還車 & 搭接駁車往機場",
           "category": "交通",
           "locationName": "OTS 租車 臨空豐崎營業所",
           "mapCode": "232 543 512*22",
           "note": "記得先把油箱加滿（Regular 汽油）並保留發票。"
+        },
+        {
+          "id": "evt-10",
+          "time": "21:30",
+          "title": "✈️ 那霸機場 (OKA) ➔ 桃園機場 (TPE)",
+          "category": "交通",
+          "locationName": "那霸機場 國際線航廈 3F 報到大廳",
+          "note": "航班：台灣虎航 IT233 (21:30-22:10)\n🧳手提行李：10kg (最多2件，54x38x23cm)\n🧳託運行李：15kg (三邊合計203cm內)\n⚠️建議 19:30 前抵達機場辦理登機與託運。"
         }
       ]
     }
