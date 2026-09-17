@@ -1,5 +1,5 @@
 import React from 'react';
-import { Calendar, Calculator, ShoppingBag, Car, ChevronRight, Clock, MapPin, ExternalLink, Plane, Luggage } from 'lucide-react';
+import { Calendar, Calculator, ShoppingBag, Car, ChevronRight, Clock, MapPin, ExternalLink, Plane, Luggage, Wallet } from 'lucide-react';
 
 export default function DashboardHome({ onNavigate, tripInfo, todayEvents }) {
   const targetDate = new Date('2026-10-26T00:00:00');
@@ -43,7 +43,6 @@ export default function DashboardHome({ onNavigate, tripInfo, todayEvents }) {
             </span>
           </div>
 
-          {/* 去程與回程 */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
             <div className="bg-slate-50 p-3 rounded-2xl border border-slate-100">
               <div className="font-bold text-blue-700 mb-1 flex items-center justify-between">
@@ -64,7 +63,6 @@ export default function DashboardHome({ onNavigate, tripInfo, todayEvents }) {
             </div>
           </div>
 
-          {/* 行李須知 */}
           <div className="bg-sky-50/70 p-3 rounded-2xl border border-sky-100 text-xs text-sky-900 space-y-1">
             <div className="font-bold flex items-center gap-1 text-sky-800 mb-1">
               <Luggage className="w-3.5 h-3.5 text-blue-600" /> 行李額度限制：
@@ -75,7 +73,7 @@ export default function DashboardHome({ onNavigate, tripInfo, todayEvents }) {
         </div>
       )}
 
-      {/* 快捷功能卡片 Grid */}
+      {/* 快捷功能卡片 Grid (包含記帳按鈕) */}
       <div className="grid grid-cols-2 gap-3.5">
         <button
           onClick={() => onNavigate('itinerary')}
@@ -94,18 +92,18 @@ export default function DashboardHome({ onNavigate, tripInfo, todayEvents }) {
         </button>
 
         <button
-          onClick={() => onNavigate('tools')}
+          onClick={() => onNavigate('expenses')}
           className="bg-white p-4 rounded-2xl shadow-sm border border-slate-100 hover:border-blue-200 transition text-left group flex flex-col justify-between"
         >
           <div className="flex justify-between items-start mb-3">
-            <div className="p-2.5 rounded-xl bg-emerald-50 text-emerald-600">
-              <Calculator className="w-5 h-5" />
+            <div className="p-2.5 rounded-xl bg-amber-50 text-amber-600">
+              <Wallet className="w-5 h-5" />
             </div>
-            <ChevronRight className="w-4 h-4 text-slate-300 group-hover:text-emerald-600 transition" />
+            <ChevronRight className="w-4 h-4 text-slate-300 group-hover:text-amber-600 transition" />
           </div>
           <div>
-            <h3 className="font-bold text-slate-800 text-sm">即時匯率試算</h3>
-            <p className="text-[11px] text-slate-400 mt-0.5">日圓 JPY ➔ 台幣 TWD</p>
+            <h3 className="font-bold text-slate-800 text-sm">公費/旅行記帳</h3>
+            <p className="text-[11px] text-slate-400 mt-0.5">日圓試算 / 公費分攤</p>
           </div>
         </button>
 
@@ -130,10 +128,10 @@ export default function DashboardHome({ onNavigate, tripInfo, todayEvents }) {
           className="bg-white p-4 rounded-2xl shadow-sm border border-slate-100 hover:border-blue-200 transition text-left group flex flex-col justify-between"
         >
           <div className="flex justify-between items-start mb-3">
-            <div className="p-2.5 rounded-xl bg-amber-50 text-amber-600">
+            <div className="p-2.5 rounded-xl bg-indigo-50 text-indigo-600">
               <Car className="w-5 h-5" />
             </div>
-            <ChevronRight className="w-4 h-4 text-slate-300 group-hover:text-amber-600 transition" />
+            <ChevronRight className="w-4 h-4 text-slate-300 group-hover:text-indigo-600 transition" />
           </div>
           <div>
             <h3 className="font-bold text-slate-800 text-sm">自駕須知</h3>

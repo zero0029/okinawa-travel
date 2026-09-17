@@ -4,11 +4,13 @@ import DashboardHome from './components/DashboardHome';
 import EventCard from './components/EventCard';
 import TravelTools from './components/TravelTools';
 import DrivingInfo from './components/DrivingInfo';
-import { Home, Calendar, Calculator, Car, Plus, RotateCcw, X, Download, Upload, Copy, Check } from 'lucide-react';
+import ExpenseTracker from './components/ExpenseTracker';
+import { Home, Calendar, Calculator, Car, Plus, RotateCcw, X, Download, Upload, Copy, Check, Wallet } from 'lucide-react';
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState('home');
+  const [activeTab, setActiveTab] = useState('home'); // 'home' | 'itinerary' | 'expenses' | 'tools' | 'driving'
   const [currentDay, setCurrentDay] = useState(1);
+  const [exchangeRate, setExchangeRate] = useState(0.212);
 
   // 從 LocalStorage 載入行程資料
   const [itineraryData, setItineraryData] = useState(() => {
@@ -16,7 +18,7 @@ export default function App() {
     return saved ? JSON.parse(saved) : initialData;
   });
 
-  // 1. 編輯景點彈窗 State
+  // Modal 狀態
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingEvent, setEditingEvent] = useState(null);
 
@@ -27,10 +29,20 @@ export default function App() {
   const [formMapCode, setFormMapCode] = useState('');
   const [formNote, setFormNote] = useState('');
 
-  // 2. 匯出/匯入彈窗 State
+  // 匯出/匯入 Modal State
   const [isSyncModalOpen, setIsSyncModalOpen] = useState(false);
   const [importJsonText, setImportJsonText] = useState('');
   const [isCopied, setIsCopied] = useState(false);
+
+  // 載入最新匯率
+  useEffect(() => {
+    fetch('https://open.er-api.com/v6/latest/JPY')
+      .then((res) => res.json())
+      .then((data) => {
+        if (data?.rates?.TWD) setExchangeRate(data.rates.TWD);
+      })
+      .catch(() => {});
+  }, []);
 
   useEffect(() => {
     localStorage.setItem('okinawa_itinerary_data', JSON.stringify(itineraryData));
@@ -40,7 +52,6 @@ export default function App() {
   const currentEvents = activeDayData ? activeDayData.events : [];
   const day1Events = itineraryData.days[0]?.events || [];
 
-  // 開啟新增景點視窗
   const handleOpenAddModal = () => {
     setEditingEvent(null);
     setFormTime('12:00');
@@ -52,7 +63,6 @@ export default function App() {
     setIsModalOpen(true);
   };
 
-  // 開啟編輯景點視窗
   const handleOpenEditModal = (evt) => {
     setEditingEvent(evt);
     setFormTime(evt.time || '');
@@ -64,7 +74,6 @@ export default function App() {
     setIsModalOpen(true);
   };
 
-  // 儲存（新增或更新景點）
   const handleSaveEvent = (e) => {
     e.preventDefault();
     if (!formTitle.trim()) return;
@@ -97,7 +106,6 @@ export default function App() {
     setIsModalOpen(false);
   };
 
-  // 刪除景點
   const handleDeleteEvent = (eventId) => {
     if (!window.confirm('確定要刪除這個景點嗎？')) return;
     const updatedDays = itineraryData.days.map((dayObj) => {
@@ -109,7 +117,6 @@ export default function App() {
     setItineraryData({ ...itineraryData, days: updatedDays });
   };
 
-  // 重置預設值
   const handleResetData = () => {
     if (window.confirm('確定要恢復成原始預設行程嗎？自訂的修改將會被清除。')) {
       setItineraryData(initialData);
@@ -117,7 +124,6 @@ export default function App() {
     }
   };
 
-  // 複製匯出文字 (備份)
   const handleCopySyncCode = () => {
     const jsonString = JSON.stringify(itineraryData);
     navigator.clipboard.writeText(jsonString);
@@ -125,7 +131,6 @@ export default function App() {
     setTimeout(() => setIsCopied(false), 2000);
   };
 
-  // 匯入貼上的文字 (同步)
   const handleImportSyncCode = () => {
     if (!importJsonText.trim()) return;
     try {
@@ -136,7 +141,7 @@ export default function App() {
         setIsSyncModalOpen(false);
         alert('🎉 行程已成功同步！');
       } else {
-        alert('⚠️ 貼上的格式不正確，請確認是完整的備份代碼！');
+        alert('⚠️ 貼上的格式不正確！');
       }
     } catch (err) {
       alert('⚠️ 格式錯誤！請確認複製的字串完整無誤。');
@@ -155,12 +160,10 @@ export default function App() {
           </div>
         </button>
 
-        {/* 頂部功能區 (同步與選單) */}
         <div className="flex items-center gap-2">
           <button
             onClick={() => setIsSyncModalOpen(true)}
             className="bg-white/20 hover:bg-white/30 text-white text-xs px-2.5 py-1.5 rounded-lg flex items-center gap-1 transition"
-            title="手機間同步/分享行程"
           >
             <Download className="w-3.5 h-3.5" />
             <span className="hidden sm:inline">同步</span>
@@ -169,6 +172,7 @@ export default function App() {
           <nav className="hidden md:flex items-center gap-1 bg-blue-700/50 p-1 rounded-xl text-xs">
             <button onClick={() => setActiveTab('home')} className={`px-3 py-1.5 rounded-lg transition ${activeTab === 'home' ? 'bg-white text-blue-700 font-bold' : 'text-white'}`}>首頁</button>
             <button onClick={() => setActiveTab('itinerary')} className={`px-3 py-1.5 rounded-lg transition ${activeTab === 'itinerary' ? 'bg-white text-blue-700 font-bold' : 'text-white'}`}>行程表</button>
+            <button onClick={() => setActiveTab('expenses')} className={`px-3 py-1.5 rounded-lg transition ${activeTab === 'expenses' ? 'bg-white text-blue-700 font-bold' : 'text-white'}`}>記帳</button>
             <button onClick={() => setActiveTab('tools')} className={`px-3 py-1.5 rounded-lg transition ${activeTab === 'tools' ? 'bg-white text-blue-700 font-bold' : 'text-white'}`}>備忘/匯率</button>
             <button onClick={() => setActiveTab('driving')} className={`px-3 py-1.5 rounded-lg transition ${activeTab === 'driving' ? 'bg-white text-blue-700 font-bold' : 'text-white'}`}>自駕須知</button>
           </nav>
@@ -205,7 +209,6 @@ export default function App() {
               <button
                 onClick={handleResetData}
                 className="text-slate-400 hover:text-slate-600 p-2 rounded-lg text-xs flex items-center gap-1 flex-shrink-0"
-                title="恢復預設行程"
               >
                 <RotateCcw className="w-3.5 h-3.5" />
               </button>
@@ -234,11 +237,12 @@ export default function App() {
           </div>
         )}
 
+        {activeTab === 'expenses' && <ExpenseTracker exchangeRate={exchangeRate} />}
         {activeTab === 'tools' && <TravelTools />}
         {activeTab === 'driving' && <DrivingInfo />}
       </main>
 
-      {/* 📱 編輯/新增景點彈窗 (Modal) */}
+      {/* 📱 編輯/新增景點 Modal */}
       {isModalOpen && (
         <div className="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-50 flex items-center justify-center p-4">
           <div className="bg-white rounded-3xl p-6 w-full max-w-md shadow-xl border border-slate-100 animate-fade-in">
@@ -345,7 +349,7 @@ export default function App() {
         </div>
       )}
 
-      {/* 📲 行程同步/備份彈窗 (Modal) */}
+      {/* 📲 行程同步 Modal */}
       {isSyncModalOpen && (
         <div className="fixed inset-0 bg-slate-900/40 backdrop-blur-sm z-50 flex items-center justify-center p-4">
           <div className="bg-white rounded-3xl p-6 w-full max-w-md shadow-xl border border-slate-100 animate-fade-in space-y-5">
@@ -358,10 +362,8 @@ export default function App() {
               </button>
             </div>
 
-            {/* 1. 複製目前行程 */}
             <div className="bg-blue-50/60 p-4 rounded-2xl border border-blue-100 text-xs space-y-2">
               <div className="font-bold text-blue-900">1. 複製最新行程文字 (傳給隊友)</div>
-              <p className="text-slate-600">將你手機上修改好的最新行程複製下來，透過 LINE 傳給同行隊友：</p>
               <button
                 onClick={handleCopySyncCode}
                 className="w-full py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl flex items-center justify-center gap-1.5 transition shadow-sm"
@@ -371,7 +373,6 @@ export default function App() {
               </button>
             </div>
 
-            {/* 2. 貼上隊友傳來的行程 */}
             <div className="bg-slate-50 p-4 rounded-2xl border border-slate-200 text-xs space-y-2">
               <div className="font-bold text-slate-800">2. 貼上隊友傳來的行程代碼</div>
               <textarea
@@ -393,12 +394,15 @@ export default function App() {
       )}
 
       {/* 📱 手機版底部導覽列 */}
-      <div className="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-md border-t border-slate-200 px-6 py-2 flex justify-around items-center z-40 md:hidden">
+      <div className="fixed bottom-0 left-0 right-0 bg-white/95 backdrop-blur-md border-t border-slate-200 px-4 py-2 flex justify-around items-center z-40 md:hidden">
         <button onClick={() => setActiveTab('home')} className={`flex flex-col items-center gap-1 text-[10px] font-medium transition ${activeTab === 'home' ? 'text-blue-600 font-bold' : 'text-slate-400'}`}>
           <Home className="w-5 h-5" />首頁
         </button>
         <button onClick={() => setActiveTab('itinerary')} className={`flex flex-col items-center gap-1 text-[10px] font-medium transition ${activeTab === 'itinerary' ? 'text-blue-600 font-bold' : 'text-slate-400'}`}>
           <Calendar className="w-5 h-5" />行程表
+        </button>
+        <button onClick={() => setActiveTab('expenses')} className={`flex flex-col items-center gap-1 text-[10px] font-medium transition ${activeTab === 'expenses' ? 'text-blue-600 font-bold' : 'text-slate-400'}`}>
+          <Wallet className="w-5 h-5" />記帳
         </button>
         <button onClick={() => setActiveTab('tools')} className={`flex flex-col items-center gap-1 text-[10px] font-medium transition ${activeTab === 'tools' ? 'text-blue-600 font-bold' : 'text-slate-400'}`}>
           <Calculator className="w-5 h-5" />備忘/匯率
